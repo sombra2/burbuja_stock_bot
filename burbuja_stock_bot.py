@@ -10,7 +10,7 @@ import urllib.parse #librería necesaria para codificar el mensaje a enviar
 
 
 
-
+# CUERPO DEL SCRIPT
 
 
 
