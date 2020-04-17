@@ -6,4 +6,5 @@ de los users y que devuelva las cotizaciones de Yahoo Finance a tiempo real
 
 import yfinance as yf
 import requests
-import urllib.parse # librería necesaria para codificar el mensaje a enviar
+import urllib.parse #librería necesaria para codificar el mensaje a enviar
+
