@@ -30,6 +30,3 @@ def telegram_bot_sendtext(bot_message):
     send_text = f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={bot_chat_id}&parse_mode=markdown&text={bot_message}'
     response = requests.get(send_text)
     return response.json()
-
-
-telegram_bot_sendtext("pruebas pruebas")
