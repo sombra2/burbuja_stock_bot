@@ -1,5 +1,9 @@
-### Installation
+### Burbuja Stock Bot
 
-Built and tested using python 3.7. We recommend running it on a virtual environment. 
+Bot de Telegram de Burbuja para mostrar mercados de valores a tiempo real
+
+### Instalación
+
+Construído y testeado usando python 3.7. Recomendamos ejecutarlo en un virtual environment.
 
 ``pip install -r requirements-txt``
