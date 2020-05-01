@@ -26,7 +26,7 @@ class BasicConfiguration:
             ),
             "r",
         ) as file:
-            self.credentials: PythonDeserializedJSON = json.load(file)
+            self.__credentials: PythonDeserializedJSON = json.load(file)
 
     def get_credential(self, credential: str) -> JSONPrimitive:
         """Throws KeyError if credential does not exist"""
