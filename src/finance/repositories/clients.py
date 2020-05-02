@@ -59,7 +59,7 @@ class YahooFinanceAPIClient(AssetAPIClient):
         )
         if len(result) == 0:
             raise FinancialAPIUnavailableData(
-                client=self.__name__, asset_id=asset_id, period=period
+                client=YahooFinanceAPIClient.__name__, asset_id=asset_id, period=period
             )
         starting_price = result.at[
             min(result.index), YahooFinanceAPIClient.RESULT_CLOSING_PRICE
