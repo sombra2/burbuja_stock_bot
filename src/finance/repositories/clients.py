@@ -4,6 +4,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from typing import List
 from datetime import datetime
 
+import numpy
 import yfinance
 from pandas import DataFrame, Timestamp
 
@@ -67,9 +68,8 @@ class YahooFinanceAPIClient(AssetAPIClient):
         ending_price = result.at[
             max(result.index), YahooFinanceAPIClient.RESULT_CLOSING_PRICE
         ]
-        if isinstance(starting_price, list) and (
-            len(starting_price) > 1 and len(ending_price) > 1
-        ):  # TODO: The API returns 2 rows if you query just 1 day... Look for a more elegant handling of this
+        # TODO: The API returns 2 rows if you query just 1 day... Look for a more elegant handling of this
+        if isinstance(starting_price, numpy.ndarray):
             starting_price, ending_price = starting_price[0], ending_price[0]
         return Valuation(
             period=period,
