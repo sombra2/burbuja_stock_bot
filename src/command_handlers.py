@@ -13,7 +13,7 @@ from src.finance.time_range import DatePeriod
 SEPARATOR = "<------------------------->\n"
 TICKER_COMPONENTS_SEPARATOR = ":"
 PERIODS_SEPARATOR = "-"
-STOCKS_COMMAND_FORMAT_ERROR_MESSAGE = "Formato de petición inválido. El formato correcto es:⁄n /stonks TICKER1:FECHA1-FECHA2 TICKER2:FECHA3-FECHA4"
+STOCKS_COMMAND_FORMAT_ERROR_MESSAGE = "Formato de petición inválido. El formato correcto es: /stonks TICKER1:FECHA1-FECHA2 TICKER2:FECHA3-FECHA4"
 
 cmd_logger = logging.getLogger("main")
 yahoo_client = ClientFactory.build(ClientFactory.YAHOO_CLIENT)
@@ -31,7 +31,7 @@ def status(update, context):
 def stonks(update, context):
     stock_valuations: List[str] = context.args
     if len(stock_valuations) == 0:
-        return STOCKS_COMMAND_FORMAT_ERROR_MESSAGE
+        return context.bot.send_message(chat_id=update.effective_chat.id, text=STOCKS_COMMAND_FORMAT_ERROR_MESSAGE)
     message = SEPARATOR
     for stock_valuation in stock_valuations:
         try:
@@ -46,7 +46,7 @@ def stonks(update, context):
                     datetime.strptime(period[1], "%Y%m%d").date(),
                 )
         except:
-            return STOCKS_COMMAND_FORMAT_ERROR_MESSAGE
+            return context.bot.send_message(chat_id=update.effective_chat.id, text=STOCKS_COMMAND_FORMAT_ERROR_MESSAGE)
         date_period = DatePeriod(start_date, end_date)
         try:
             valuations: Dict[
